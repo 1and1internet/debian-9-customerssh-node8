@@ -1,4 +1,4 @@
-# Debian 9 (Stretch) Docker Image
+# Debian 9 (Stretch) Docker Image For Customer SSH (Node 8 only)
 
 ## Description
 
@@ -9,4 +9,3 @@ This image provides a [Debian](https://www.debian.org/) based docker base image 
 ## Current Status: Work In Progress
 
 This image is currently an experimental work in progress.
-
