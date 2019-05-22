@@ -4,6 +4,7 @@ COPY files/ /
 
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
   apt-get update && \
+  echo "root:*:18022:0:99999:7:::" >> /etc/shadow && \
   apt-get install -y curl apt-transport-https ca-certificates lsb-release gnupg \
   		openssh-client openssh-sftp-server git vim traceroute \
 		telnet nano dnsutils wget iputils-ping mysql-client libmariadbclient-dev && \
@@ -18,7 +19,8 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
   chmod 0777 /var/www && \
   rm -rf /usr/src/tmp/ && \
   rm -f /etc/ssh/ssh_host_* && \
-  chmod -R 0777 /etc/supervisor/conf.d
+  chmod -R 0777 /etc/supervisor/conf.d && \
+  sed -i '/^root/d' /etc/shadow
 
 ENV HOME=/var/www
 WORKDIR /var/www
